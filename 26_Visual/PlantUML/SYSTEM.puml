@@ -1,0 +1,11 @@
+@startuml REENA
+package "Flutter App" {
+  [Decision Engine] : 7 sub-engines\n847 tests
+  [AI SDK] : Anthropic + Mock
+  [Knowledge Vault] : 48 veg recipes
+  [SharedPreferences] : reena.*.v1
+}
+[Decision Engine] --> [Knowledge Vault]
+[AI SDK] --> [Anthropic API]
+[Decision Engine] --> [SharedPreferences]
+@enduml
