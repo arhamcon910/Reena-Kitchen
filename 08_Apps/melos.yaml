@@ -5,6 +5,7 @@ packages:
   - tablet
   - admin
   - shared
+  - packages/db
 
 scripts:
   get:

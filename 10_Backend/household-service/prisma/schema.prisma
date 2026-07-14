@@ -1,0 +1,43 @@
+// REENA AI Kitchen — Household Service Schema
+// Sprint S003
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Household {
+  id        String   @id @default(cuid())
+  name      String
+  timezone  String   @default("Asia/Kolkata")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  members   Member[]
+
+  @@map("households")
+}
+
+model Member {
+  id          String    @id @default(cuid())
+  householdId String    @map("household_id")
+  household   Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+  name        String
+  role        MemberRole @default(ADULT)
+  healthGoals String[]
+  dietaryNotes String?  @map("dietary_notes")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("members")
+}
+
+enum MemberRole {
+  HEAD
+  ADULT
+  CHILD
+  SENIOR
+}
