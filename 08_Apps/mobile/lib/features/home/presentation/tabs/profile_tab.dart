@@ -211,19 +211,3 @@ final householdDetailsProvider =
   if (householdId.isEmpty) return null;
   return ref.read(householdRepositoryProvider).findById(householdId);
 });
-# Node / NestJS
-node_modules/
-dist/
-.env
-*.db
-*.db-journal
-create-db.mjs
-check-db.mjs
-
-# Flutter
-pubspec.lock
-.dart_tool/
-build/
-*.g.dart
-*.freezed.dart
-analyze.txt

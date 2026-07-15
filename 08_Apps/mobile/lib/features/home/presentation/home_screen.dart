@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../pantry/presentation/pantry_screen.dart';
 import '../../recipe/presentation/recipes_screen.dart';
+import '../../shopping/presentation/shopping_screen.dart';
 import 'tabs/home_tab.dart';
 import 'tabs/profile_tab.dart';
 
@@ -19,16 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     PantryScreen(),
     RecipesScreen(),
+    ShoppingScreen(),
     ProfileTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _tabs,
-      ),
+      body: IndexedStack(index: _selectedIndex, children: _tabs),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (i) => setState(() => _selectedIndex = i),
@@ -47,6 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.restaurant_menu_outlined),
             selectedIcon: Icon(Icons.restaurant_menu),
             label: 'Recipes',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.shopping_cart_outlined),
+            selectedIcon: Icon(Icons.shopping_cart),
+            label: 'Shopping',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outlined),
