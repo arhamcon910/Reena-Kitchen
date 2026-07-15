@@ -1,27 +1,36 @@
-# Recipe Service
+# REENA Recipe Service
 
-**Tech:** NestJS + PostgreSQL | **Port:** 3004 | **Status:** 📋 Phase 2
+**Sprint S005** | Port 3004 | Database: reena_recipe_db
 
-## Responsibility
+Vegetarian Indian recipe catalogue with search and festival filtering.
 
-Recipe Service handles its domain within the REENA backend microservices.
-
-## Health Check
-
-```
-GET /health → {"status": "ok", "service": "recipe-service"}
-```
-
-## Environment
-
-```env
-NODE_ENV=production
-DATABASE_URL=postgresql://...
-PORT=3004
-```
-
-## Local Dev
+## Quick Start
 
 ```bash
-npm install && npm run start:dev
+npm install
+copy .env.example .env
+npx prisma migrate dev --name init
+npx prisma generate
+npm run build
+npm run start
 ```
+
+## Endpoints
+
+| Method | Path | Description |
+|---|---|---|
+| POST | /recipes | Create recipe |
+| POST | /recipes/seed | Seed 8 default recipes |
+| GET | /recipes | Search/list all |
+| GET | /recipes?q=dal | Full-text search |
+| GET | /recipes?category=DINNER | Filter by meal |
+| GET | /recipes?festival=Diwali | Festival recipes |
+| GET | /recipes?vegetarianOnly=true | Veg only |
+| GET | /recipes?maxMinutes=20 | Quick meals |
+| GET | /recipes/category/:category | By category |
+| GET | /recipes/festival/:festival | By festival |
+| GET | /recipes/:id | Get by ID |
+| PATCH | /recipes/:id | Update |
+| DELETE | /recipes/:id | Delete |
+| GET | /health | Health check |
+| GET | /api/docs | Swagger UI |

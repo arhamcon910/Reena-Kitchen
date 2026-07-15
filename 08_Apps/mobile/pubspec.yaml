@@ -1,0 +1,29 @@
+name: reena_mobile
+description: REENA AI Kitchen — Mobile application.
+version: 1.0.0-s001+101
+
+publish_to: none
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # State management
+  flutter_riverpod: ^2.5.1
+  # Navigation
+  go_router: ^13.2.0
+  # Networking
+  http: ^1.2.0
+  # Storage
+  shared_preferences: ^2.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

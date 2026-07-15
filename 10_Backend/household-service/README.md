@@ -1,27 +1,39 @@
-# Household Service
+# REENA Household Service
 
-**Tech:** NestJS + PostgreSQL | **Port:** 3002 | **Status:** 📋 Phase 2
+**Sprint S003** | Port 3002
 
-## Responsibility
+Manages households and their members.
 
-Household Service handles its domain within the REENA backend microservices.
-
-## Health Check
-
-```
-GET /health → {"status": "ok", "service": "household-service"}
-```
-
-## Environment
-
-```env
-NODE_ENV=production
-DATABASE_URL=postgresql://...
-PORT=3002
-```
-
-## Local Dev
+## Quick Start
 
 ```bash
-npm install && npm run start:dev
+npm install
+copy .env.example .env
+npx prisma migrate dev --name init
+npm run build
+npm run start
 ```
+
+## Endpoints
+
+### Households
+| Method | Path | Description |
+|---|---|---|
+| POST | /households | Create household |
+| GET | /households | List all |
+| GET | /households/:id | Get by ID |
+| PATCH | /households/:id | Update |
+| DELETE | /households/:id | Delete |
+
+### Members
+| Method | Path | Description |
+|---|---|---|
+| POST | /households/:id/members | Add member |
+| GET | /households/:id/members | List members |
+| GET | /households/:id/members/:memberId | Get member |
+| PATCH | /households/:id/members/:memberId | Update |
+| DELETE | /households/:id/members/:memberId | Remove |
+
+### System
+| GET | /health | Health check |
+| GET | /api/docs | Swagger UI |

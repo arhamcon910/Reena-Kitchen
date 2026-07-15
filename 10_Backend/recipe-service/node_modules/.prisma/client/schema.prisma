@@ -1,0 +1,53 @@
+// REENA AI Kitchen — Recipe Service Schema
+// Sprint S005
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Recipe {
+  id           String       @id @default(cuid())
+  name         String
+  description  String?
+  cuisine      String       @default("Indian")
+  category     MealCategory
+  spiceLevel   SpiceLevel   @default(MEDIUM) @map("spice_level")
+  isVegetarian Boolean      @default(true) @map("is_vegetarian")
+  prepMinutes  Int          @default(0) @map("prep_minutes")
+  cookMinutes  Int          @map("cook_minutes")
+  servings     Int          @default(4)
+  calories     Int?
+  proteinG     Float?       @map("protein_g")
+  fibreG       Float?       @map("fibre_g")
+  costInr      Int?         @map("cost_inr")
+  ingredients  String[]
+  tags         String[]
+  festivals    String[]
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([isVegetarian])
+  @@index([cuisine])
+  @@map("recipes")
+}
+
+enum MealCategory {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+  DESSERT
+  DRINK
+}
+
+enum SpiceLevel {
+  MILD
+  MEDIUM
+  HOT
+}
