@@ -1,0 +1,40 @@
+// REENA AI Kitchen — Pantry Service Schema
+// Sprint S004
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PantryItem {
+  id          String       @id @default(cuid())
+  householdId String       @map("household_id")
+  name        String
+  quantity    Float?
+  unit        String?
+  category    ItemCategory @default(OTHER)
+  inStock     Boolean      @default(true) @map("in_stock")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  @@index([householdId])
+  @@index([householdId, inStock])
+  @@map("pantry_items")
+}
+
+enum ItemCategory {
+  VEGETABLE
+  FRUIT
+  GRAIN
+  DAIRY
+  SPICE
+  OIL
+  LEGUME
+  NUT
+  HERB
+  OTHER
+}

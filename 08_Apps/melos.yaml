@@ -1,0 +1,21 @@
+name: reena
+
+packages:
+  - mobile
+  - tablet
+  - admin
+  - shared
+  - packages/db
+
+scripts:
+  get:
+    run: melos exec -- flutter pub get
+
+  analyze:
+    run: melos exec -- flutter analyze
+
+  test:
+    run: melos exec -- flutter test
+
+  clean:
+    run: melos exec -- flutter clean
