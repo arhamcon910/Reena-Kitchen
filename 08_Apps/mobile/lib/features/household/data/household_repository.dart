@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../../core/constants/app_constants.dart';
 import '../../../core/network/api_client.dart';
 
@@ -29,6 +28,13 @@ class HouseholdRepository {
       '/households/$householdId/members',
       {'name': name, 'role': role},
     );
+  }
+
+  Future<Map<String, dynamic>> updateName(
+    String householdId,
+    String name,
+  ) async {
+    return _client.patch('/households/$householdId', {'name': name});
   }
 }
 

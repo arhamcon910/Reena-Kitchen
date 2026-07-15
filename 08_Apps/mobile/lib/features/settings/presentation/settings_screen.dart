@@ -26,7 +26,7 @@ class SettingsScreen extends ConsumerWidget {
               delegate: SliverChildListDelegate([
 
                 // ── Appearance ────────────────────────────────────────────
-                _Section('Appearance'),
+                const _Section('Appearance'),
                 Card(
                   child: Column(children: [
                     ListTile(
@@ -55,7 +55,7 @@ class SettingsScreen extends ConsumerWidget {
                 const SizedBox(height: 20),
 
                 // ── Notifications ────────────────────────────────────────
-                _Section('Notifications'),
+                const _Section('Notifications'),
                 Card(
                   child: Column(children: [
                     SwitchListTile(
@@ -80,7 +80,7 @@ class SettingsScreen extends ConsumerWidget {
                 const SizedBox(height: 20),
 
                 // ── Health Goals ─────────────────────────────────────────
-                _Section('Health Goals'),
+                const _Section('Health Goals'),
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -116,27 +116,27 @@ class SettingsScreen extends ConsumerWidget {
                 const SizedBox(height: 20),
 
                 // ── About ─────────────────────────────────────────────────
-                _Section('About'),
-                Card(
+                const _Section('About'),
+                const Card(
                   child: Column(children: [
                     ListTile(
-                      leading: const Icon(Icons.kitchen),
-                      title: const Text('REENA AI Kitchen'),
+                      leading: Icon(Icons.kitchen),
+                      title: Text('REENA AI Kitchen'),
                       subtitle: Text('Version ${AppConstants.version}'),
                     ),
-                    const Divider(height: 1),
+                    Divider(height: 1),
                     ListTile(
-                      leading: const Icon(Icons.eco_outlined),
-                      title: const Text('Vegetarian policy'),
-                      subtitle: const Text('All recommendations are 100% vegetarian'),
-                      trailing: const Icon(Icons.check_circle,
+                      leading: Icon(Icons.eco_outlined),
+                      title: Text('Vegetarian policy'),
+                      subtitle: Text('All recommendations are 100% vegetarian'),
+                      trailing: Icon(Icons.check_circle,
                           color: Color(0xFF4CAF50)),
                     ),
-                    const Divider(height: 1),
+                    Divider(height: 1),
                     ListTile(
-                      leading: const Icon(Icons.lock_outlined),
-                      title: const Text('Privacy'),
-                      subtitle: const Text(
+                      leading: Icon(Icons.lock_outlined),
+                      title: Text('Privacy'),
+                      subtitle: Text(
                           'Your data stays on your device. No tracking.'),
                     ),
                   ]),

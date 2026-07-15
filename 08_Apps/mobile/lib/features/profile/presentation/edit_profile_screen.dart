@@ -42,13 +42,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           email: ref.read(authProvider).email ?? '',
           name: newName,
         );
-        // Refresh auth state by re-reading storage
-        ref.read(authProvider.notifier)
-          // ignore: invalid_use_of_protected_member
-          ..state = ref.read(authProvider).isAuthenticated
-              ? ref.read(authProvider)
-              : ref.read(authProvider);
-      }
+              }
 
       // Update household name if provided
       final householdName = _householdCtrl.text.trim();

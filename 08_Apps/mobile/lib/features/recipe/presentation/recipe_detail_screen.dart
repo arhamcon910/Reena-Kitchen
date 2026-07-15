@@ -51,8 +51,8 @@ class RecipeDetailScreen extends ConsumerWidget {
                           color: Color(Recipe.spiceColors[recipe.spiceLevel] ??
                               0xFFFF9800)),
                       if (recipe.isVegetarian)
-                        _Badge('VEG 🌿',
-                            color: const Color(0xFF4CAF50)),
+                        const _Badge('VEG 🌿',
+                            color: Color(0xFF4CAF50)),
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -100,7 +100,7 @@ class RecipeDetailScreen extends ConsumerWidget {
 
                   // ── Time breakdown ───────────────────────────────────
                   if (recipe.prepMinutes > 0) ...[
-                    _Section('Time Breakdown'),
+                    const _Section('Time Breakdown'),
                     const SizedBox(height: 12),
                     Row(children: [
                       _TimeBar('Prep', recipe.prepMinutes,
@@ -114,7 +114,7 @@ class RecipeDetailScreen extends ConsumerWidget {
 
                   // ── Ingredients ──────────────────────────────────────
                   if (recipe.ingredients.isNotEmpty) ...[
-                    _Section('Ingredients'),
+                    const _Section('Ingredients'),
                     const SizedBox(height: 12),
                     ...recipe.ingredients.map((i) => Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6),
@@ -138,7 +138,7 @@ class RecipeDetailScreen extends ConsumerWidget {
                   // ── Nutrition ────────────────────────────────────────
                   if (recipe.calories != null ||
                       recipe.proteinG != null) ...[
-                    _Section('Nutrition (per serving)'),
+                    const _Section('Nutrition (per serving)'),
                     const SizedBox(height: 12),
                     Card(
                       child: Padding(
@@ -163,7 +163,7 @@ class RecipeDetailScreen extends ConsumerWidget {
 
                   // ── Festivals ────────────────────────────────────────
                   if (recipe.festivals.isNotEmpty) ...[
-                    _Section('Festivals'),
+                    const _Section('Festivals'),
                     const SizedBox(height: 12),
                     Wrap(
                       spacing: 8,
@@ -180,7 +180,7 @@ class RecipeDetailScreen extends ConsumerWidget {
 
                   // ── Tags ─────────────────────────────────────────────
                   if (recipe.tags.isNotEmpty) ...[
-                    _Section('Tags'),
+                    const _Section('Tags'),
                     const SizedBox(height: 12),
                     Wrap(
                       spacing: 8,

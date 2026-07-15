@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/constants/app_constants.dart';
-import '../../../core/storage/auth_storage.dart';
 import '../../household/providers/household_provider.dart';
 import '../../meal_planner/providers/meal_plan_provider.dart';
 import '../../pantry/data/pantry_repository.dart';
@@ -140,29 +138,29 @@ class ShoppingScreen extends ConsumerWidget {
   Future<void> _generateFromMeals(BuildContext context, WidgetRef ref) async {
     final messenger = ScaffoldMessenger.of(context);
 
-    // Get today's meal plan
-    final plan = await ref.read(mealPlanProvider.future).catchError((_) => null);
-    final today = plan?.today;
-    if (today == null || today.slots.isEmpty) {
-      messenger.showSnackBar(
-          const SnackBar(content: Text('No meal plan for today')));
-      return;
-    }
-
-    // Show loading
-    messenger.showSnackBar(
-      const SnackBar(
-        content: Row(children: [
-          SizedBox(width: 20, height: 20,
-              child: CircularProgressIndicator(strokeWidth: 2)),
-          SizedBox(width: 12),
-          Text('Gathering ingredients...'),
-        ]),
-        duration: Duration(seconds: 5),
-      ),
-    );
-
     try {
+      // Get today's meal plan
+      final plan = await ref.read(mealPlanProvider.future);
+      final today = plan.today;
+      if (today == null || today.slots.isEmpty) {
+        messenger.showSnackBar(
+            const SnackBar(content: Text('No meal plan for today')));
+        return;
+      }
+
+      // Show loading
+      messenger.showSnackBar(
+        const SnackBar(
+          content: Row(children: [
+            SizedBox(width: 20, height: 20,
+                child: CircularProgressIndicator(strokeWidth: 2)),
+            SizedBox(width: 12),
+            Text('Gathering ingredients...'),
+          ]),
+          duration: Duration(seconds: 5),
+        ),
+      );
+
       // Collect all ingredients from today's recipes
       final ingredients = <String>[];
       for (final slot in today.slots) {
